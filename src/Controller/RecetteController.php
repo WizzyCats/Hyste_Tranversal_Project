@@ -30,6 +30,8 @@ final class RecetteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $recette->setAuteur($this->getUser());
+            $recette->setCreatedAt(new \DateTimeImmutable());
             $entityManager->persist($recette);
             $entityManager->flush();
 

@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\Categorie;
 use App\Entity\Recette;
-use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RecetteType extends AbstractType
@@ -18,19 +18,19 @@ class RecetteType extends AbstractType
             ->add('titre')
             ->add('description')
             ->add('instructions')
-            ->add('tempsPreparation')
-            ->add('difficulte')
-            ->add('image')
-            ->add('createAt', null, [
-                'widget' => 'single_text'
+            ->add('tempsPreparation', null, ['label' => 'Temps de préparation (min)'])
+            ->add('difficulte', ChoiceType::class, [
+                'choices' => [
+                    'Facile' => 'facile',
+                    'Moyen' => 'moyen',
+                    'Difficile' => 'difficile',
+                ],
             ])
-            ->add('auteur', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
+            ->add('image', null, ['label' => 'URL de l\'image', 'required' => false])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
+                'placeholder' => '-- Choisir une catégorie --',
             ])
         ;
     }

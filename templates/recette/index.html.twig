@@ -15,7 +15,7 @@
                 <th>TempsPreparation</th>
                 <th>Difficulte</th>
                 <th>Image</th>
-                <th>CreateAt</th>
+                <th>Créée le</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
                 <td>{{ recette.tempsPreparation }}</td>
                 <td>{{ recette.difficulte }}</td>
                 <td>{{ recette.image }}</td>
-                <td>{{ recette.createAt ? recette.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ recette.createdAt ? recette.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_recette_show', {'id': recette.id}) }}">show</a>
                     <a href="{{ path('app_recette_edit', {'id': recette.id}) }}">edit</a>
