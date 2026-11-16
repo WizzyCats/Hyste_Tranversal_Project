@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+    <ul>
+        <li><a href="{{ path('app_recette_index') }}">Recettes</a></li>
+        <li><a href="{{ path('app_categorie_index') }}">Catégories</a></li>
+        <li><a href="{{ path('app_ingredient_index') }}">Ingrédients</a></li>
+    </ul>
+    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+{% endblock %}
