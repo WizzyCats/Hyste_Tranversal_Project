@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RecetteType extends AbstractType
@@ -31,6 +32,13 @@ class RecetteType extends AbstractType
                 'class' => Categorie::class,
                 'choice_label' => 'nom',
                 'placeholder' => '-- Choisir une catégorie --',
+            ])
+            ->add('recetteIngredients', CollectionType::class, [
+                'entry_type' => RecetteIngredientType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'label' => false,
             ])
         ;
     }
