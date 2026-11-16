@@ -27,6 +27,7 @@ class Recette
     private ?string $instructions = null;
 
     #[ORM\Column]
+    #[Assert\Positive(message: 'Le temps doit être supérieur à 0.')]
     private ?int $tempsPreparation = null;
 
     #[ORM\Column(length: 20)]
@@ -45,7 +46,6 @@ class Recette
     #[ORM\ManyToOne(inversedBy: 'recettes')]
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotNull(message: 'Choisis une catégorie.')]
-    #[Assert\Positive(message: 'Le temps doit être supérieur à 0.')]
     private ?Categorie $categorie = null;
 
     /**
