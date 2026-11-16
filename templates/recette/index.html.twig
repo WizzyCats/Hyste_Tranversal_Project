@@ -14,7 +14,6 @@
                 <th>Instructions</th>
                 <th>TempsPreparation</th>
                 <th>Difficulte</th>
-                <th>Image</th>
                 <th>Créée le</th>
                 <th>actions</th>
             </tr>
@@ -24,11 +23,10 @@
             <tr>
                 <td>{{ recette.id }}</td>
                 <td>{{ recette.titre }}</td>
-                <td>{{ recette.description }}</td>
-                <td>{{ recette.instructions }}</td>
+                <td>{{ recette.description|slice(0, 60) }} {% if recette.description|length > 60 %}…{% endif %}</td>
+                <td>{{ recette.instructions|slice(0, 60) }} {% if recette.description|length > 60 %}…{% endif %}</td>
                 <td>{{ recette.tempsPreparation }}</td>
                 <td>{{ recette.difficulte }}</td>
-                <td>{{ recette.image }}</td>
                 <td>{{ recette.createdAt ? recette.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_recette_show', {'id': recette.id}) }}">show</a>
