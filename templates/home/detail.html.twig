@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ recette.titre }} - Chef's Table{% endblock %}
+
+{% block body %}
+    <article class="detail">
+        <h1>{{ recette.titre }}</h1>
+        {% if recette.image %}
+            <img src="{{ recette.image }}" alt="{{ recette.titre }}" width="800" height="450">
+        {% endif %}
+
+        <p>
+            <span class="badge">{{ recette.categorie.nom }}</span>
+            ⏱ {{ recette.tempsPreparation }} min · {{ recette.difficulte|capitalize }}
+            · par {{ recette.auteur.pseudo }}
+        </p>
+
+        <p>{{ recette.description }}</p>
+
+        <h2>Ingrédients</h2>
+        <ul>
+            {% for ri in recette.recetteIngredients %}
+                <li>{{ ri.quantite }} {{ ri.unite }} {{ ri.ingredient.nom }}</li>
+            {% else %}
+                <li>Aucun ingrédient renseigné.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Préparation</h2>
+        <div class="instructions">{{ recette.instructions|nl2br }}</div>
+
+        <p><a href="{{ path('app_home') }}">← Retour aux recettes</a></p>
+    </article>
+{% endblock %}

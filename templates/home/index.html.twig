@@ -4,5 +4,25 @@
 
 {% block body %}
     <h1>Chef's Table</h1>
-    <p>Bientôt, toutes les recettes ici !</p>
+    <p>Découvre les recettes de la communauté</p>
+
+    <section class="cartes">
+        {% for recette in recettes %}
+            <article class="carte"
+                     data-categorie="{{ recette.categorie.id }}"
+                     data-ingredients="{% for ri in recette.recetteIngredients %}{{ ri.ingredient.nom|lower }} {% endfor %}">
+                {% if recette.image %}
+                    <img src="{{ recette.image }}" alt="{{ recette.titre }}" loading="lazy" width="400" height="250">
+                {% endif %}
+                <div class="carte-contenu">
+                    <span class="badge">{{ recette.categorie.nom }}</span>
+                    <h2>{{ recette.titre }}</h2>
+                    <p>⏱ {{ recette.tempsPreparation }} min · {{ recette.difficulte|capitalize }}</p>
+                    <a href="{{ path('app_recette_detail', {id: recette.id}) }}">Voir la recette →</a>
+                </div>
+            </article>
+        {% else %}
+            <p>Aucune recette pour le moment.</p>
+        {% endfor %}
+    </section>
 {% endblock %}

@@ -386,3 +386,79 @@ td a {
     color: var(--nuit-claire);
     font-weight: 600;
 }
+
+/* Front */
+.cartes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.carte {
+    overflow: hidden;
+    color: var(--texte);
+    background: var(--nuage);
+    border-radius: 24px;
+    box-shadow: 0 6px 18px rgba(13, 29, 82, 0.25);
+    transition: transform 0.2s;
+}
+
+.carte:hover {
+    transform: translateY(-4px);
+}
+
+.carte img,
+.detail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.carte img {
+    aspect-ratio: 16 / 10;
+}
+
+.carte-contenu {
+    padding: 1rem 1.2rem 1.3rem;
+}
+
+.carte-contenu h2 {
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.carte-contenu p {
+    margin: 0 0 0.8rem;
+    text-align: left;
+    color: var(--texte-doux);
+}
+
+.carte-contenu a {
+    color: var(--nuit-claire);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--texte);
+    background: var(--arc-en-ciel);
+    border-radius: 999px;
+}
+
+.detail img {
+    margin-bottom: 1rem;
+    border-radius: 24px;
+}
+
+.instructions {
+    padding: 1.2rem;
+    color: var(--texte);
+    background: var(--nuage);
+    border-radius: 20px;
+    line-height: 1.6;
+}
